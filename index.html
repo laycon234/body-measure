@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/js/bootstrap.bundle.js">
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="w-25 m-auto rounded p-3 shadow bg-primary">
+        <h1>Find the body measure</h1>
+        <input id="height" type="number" class="form-control mt-3 " >
+        <input id="weight" type="number" class="form-control mt-3 " >
+        <button class="btn btn-success mt-3" onclick="calculate()()">Calculate</button>
+        <div id="reply"></div>
+        <div id="replyTwo"></div>
+    </main>
+</body>
+
+</html>
+<script>
+    let myValue1 = document.getElementById('height')
+    let myValue2 = document.getElementById('weight')
+    let output1 = document.getElementById('reply')
+    let output2 = document.getElementById('replyTwo')
+
+    function calculate() {
+        let bm = Number(myValue2.value.trim()) / (myValue1.value.trim() ** 2)
+        if (myValue1.value.trim() === '' || myValue2.value.trim() === '') {
+            output1.innerHTML = `<h1 class="text danger">please fill all fields</h1>`
+        } else {
+            output1.innerHTML = `<h1>${bm.toFixed(2)} m<sup>2</sup></h1>`
+        }
+        return function replies(params) {
+            if (bm < 18.5) {
+                output2.innerHTML = `<h1 class="text-danger">You are Underweight</h1>`
+            } else if (bm >= 18.5 && bm <= 24.9) {
+                output2.innerHTML = `<h1 class="text-success">You have a Normal Weight</h1>`
+            } else if (bm >= 25 && bm <= 29.9) {
+                output2.innerHTML = `<h1 class="text-danger">You are Overweight</h1>`
+            } else {
+                output2.innerHTML = `<h1 class="text-danger">You are Obese</h1>`
+            }
+        }
+    }
+</script>
